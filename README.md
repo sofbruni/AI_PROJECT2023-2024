@@ -61,6 +61,30 @@ After the encoding, we proceeded in analyzing the correlation between our target
 ### Splitting and Scaling the Data
 Once the data was ready to be used for the training of our models, we proceeded in splitting it into training and test set, by using the **'train_test_split'** function from the scikit-learn library; we decided to have a split ratio of 75/25, meaning that 75% of the data is used for the train set and 15% of the data is used for the test set. We also decided to use a random state of 42, in order to have reproducible results. After the split, we proceeded in scaling the numerical features using the **'StandardScaler'** from the scikit-learn library; note that we fit the scaler only on the training data and not the testing data to avoid data leakage; after fitting the scaler on the training data, we transformed both the training and testing sets.
 
+### Problem Definition and Model Selection
+Due to the nature of our target variable 'Satisfied' (binary categorical variable), we decided to approach the problem as a classification task. Therefore, we decided to implement the following models according to our data specifi characteristicts: Logistic Regression, KNN and Decision Trees.
+
 ### Flowchart
 
 ## Experimental Design 📐 (section 3)
+After determining the nature of our task (classification) and the target variable (Satisfied), we distinguished two different phases in building our model:
+- **Training of the models**: In this phase we focused on training our models in order to obtain a first evaluation of their performance; we trained three models, Logistic Regression, KNN and Decision Trees. We also evaluated the models' performances using different metrics, Accuracy, Precision, Recall, F1-Score, and by plotting the ROC curve and the confusion matrix. We used these first results as a baseline for the second phase.
+- **Tuning the Hyperparameters**: In this phase we focused on tuning the hyperparameters of our models in order to improve their performance; we first used the **Randomized Search** algorithm, that is the *less computationally and timing expensive*, then we applied on the best parameters found the *Grid Search* algorithm in order to do a further research regarding the best parameters for the *best model possible*; again we evaluated the models' performances on the same metrics.
+
+### Evaluation Metrics
+- **Accuracy**: is defined as the *ratio of the number of correct predictions to the total number of predictions*. This metric is considered as a good starting point for classification problems that have well balanced data and not skewed; however, it is not a good metric when the dataset is imbalanced;
+- **Precision**: is the ratio of true positives to the summation of true positives and false positives. It basically *analyses the positive predictions* and it's a particularly useful metric when the cost of false positives is high;
+- **Recall**: is the ratio of true positives to the summation of true positives and false negatives. It basically *analyses the number of correct positive samples* and it's a particularly useful metric when the cost of false negatives is high;
+- **F1 score**: is the *harmonic mean of precision and recall*. It is seen that during the precision-recall trade-off if we increase the precision, recall decreases and vice versa. The goal of the F1 score is to combine precision and recall.
+- **Confusion matrix**: a table used to assess the performances of a classification model; it works by summarizing the counts of true positive, true negative, false positive, and false negative predictions.
+- **Receiver Operating Characteristic(ROC) curve**: is a *probabilistic curve* used to *highlight the model’s performance*. The ROC curve is created by plotting the true positive rate (TPR) against the false positive rate (FPR) at various threshold settings. The area under the curve (AUC) is a measure of how well a parameter can distinguish between two groups. The higher the AUC, the better the model is at predicting.
+
+### Models Selection
+
+- **Logistic Regression**
+- **KNN**
+- **Decion Trees**
+
+## Results (Section 4)
+
+## Conclusions (Section 5)
