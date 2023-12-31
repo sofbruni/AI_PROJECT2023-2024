@@ -81,9 +81,10 @@ After determining the nature of our task (classification) and the target variabl
 
 ### Models Selection
 - **Logistic Regression:** we decided to use this model because it is a simple and fast model that can be used as a baseline for our analysis; moreover, it is a linear model that can be used for binary classification tasks, and it is also a probabilistic model that can be used to obtain the probability of a sample belonging to a certain class. Note that in order to apply this model to our dataset we had to start from the assumption that the features have a linearly decision boundary, which can be beneficial when the relationship between the features and the target variable is approximately linear; therefore, we decided to proceed with the training of this model since we wanted to explore the relationship between the features and the target variable assuming its linearity.
-- **KNN:**
-- **Decion Trees:**
 
+- **KNN:** after assuming linearity in the relationship between features and target variable, we decided to train a non-linear model, K-Nearest Neighbors (KNN), in order to explore the relationship between the features and the target variable assuming its non-linearity; this model is based on the main idea that the class of a data point is determined by the classes of its nearest neighbors. Hence, the main difference between this model and the previous one is that KNN is a so called *'lazy learner'*, meaning that it doesn't learn a discriminative function from the training data but it memorizes the training dataset instead, which might lead to obtaining a computationally expensive model.
+
+- **Decision Trees:** 
 ### Hyperparameter Tuning
 For this project, we devided this part into two steps:
 
