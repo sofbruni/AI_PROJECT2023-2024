@@ -84,7 +84,9 @@ After determining the nature of our task (classification) and the target variabl
 
 - **KNN:** after assuming linearity in the relationship between features and target variable, we decided to train a non-linear model, K-Nearest Neighbors (KNN), in order to explore the relationship between the features and the target variable assuming its non-linearity; this model is based on the main idea that the class of a data point is determined by the classes of its nearest neighbors. Hence, the main difference between this model and the previous one is that KNN is a so called *'lazy learner'*, meaning that it doesn't learn a discriminative function from the training data but it memorizes the training dataset instead, which might lead to obtaining a computationally expensive model.
 
-- **Decision Trees:** 
+- **Decision Trees:** the third and last model we selected is Decision Trees, which was mainly chosen after seeing the improvement achieved by the previous non-linear model KNN; indeed, Decision trees naturally handle non-linear relationships and interactions between features, and they can capture complex decision boundaries in the data without requiring explicit feature engineering. Moreover, they are also easy to interpret and visualize, which is a great advantage when we want to understand how the model makes predictions; in our case, we particularly valued this aspect since for the purpose of our project (that is to help the marketing team to target specific customers based on their satifaction) the marketing team might be interested in the role pleayed by each feature in determining the satifaction of a customer. 
+
+
 ### Hyperparameter Tuning
 For this project, we devided this part into two steps:
 
