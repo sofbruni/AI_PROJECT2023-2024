@@ -80,10 +80,15 @@ After determining the nature of our task (classification) and the target variabl
 - **Receiver Operating Characteristic(ROC) curve**: is a *probabilistic curve* used to *highlight the model’s performance*. The ROC curve is created by plotting the true positive rate (TPR) against the false positive rate (FPR) at various threshold settings. The area under the curve (AUC) is a measure of how well a parameter can distinguish between two groups. The higher the AUC, the better the model is at predicting.
 
 ### Models Selection
+- **Logistic Regression:** we decided to use this model because it is a simple and fast model that can be used as a baseline for our analysis; moreover, it is a linear model that can be used for binary classification tasks, and it is also a probabilistic model that can be used to obtain the probability of a sample belonging to a certain class. Note that in order to apply this model to our dataset we had to start from the assumption that the features have a linearly decision boundary, which can be beneficial when the relationship between the features and the target variable is approximately linear; therefore, we decided to proceed with the training of this model since we wanted to explore the relationship between the features and the target variable assuming its linearity.
+- **KNN:**
+- **Decion Trees:**
 
-- **Logistic Regression**
-- **KNN**
-- **Decion Trees**
+### Hyperparameter Tuning
+For this project, we devided this part into two steps:
+
+- **Randomized Search:** we fistly used the RandomizedSearchCV algorithm which performs a random search over a specified hyperparameter distribution; instead of trying all possible combinations, it randomly samples a fixed number of hyperparameter configurations from the specified distribution and it uses *cross-validation* to evaluate the performance of each sampled configuration. This approach has two main benefits: it allows us to narrow down the range of hyperparameters to explore, and it allows us to control the computational budget we want to allocate to hyperparameter tuning.
+- **Grid Search:** then we applied on the best parameters found, the Grid Search algorithm in order to do a further research regarding the best parameters; it takes as input a dictionary where keys are hyperparameter names, and values are lists of values to try (provided by the Randomized Search). It then evaluates all possible combinations of hyperparameter values using cross-validated performance. Even though this algorithm performs an exhaustive search over a specified hyperparameter grid, it can be more computationally expensive, especially with a large hyperparameter space, compared with Randomized Search (and that's why we decided to further proceed with Grid Search after selecting the best parameter to tune with Randomized Search).
 
 ## Results (Section 4)
 
