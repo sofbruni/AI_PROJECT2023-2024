@@ -1,16 +1,22 @@
-# Artificial Intelligence & Machine Learning - 2023/2024 : Trains Dataset Project (title to be changed)
+# Artificial Intelligence & Machine Learning - 2023/2024 : Trains Dataset Project 
 - **Bruni Sofia        (285231)**
 - **Sebastiani Mattia  (......)**
 - **Torella Marta      (284091)**
 
 ## A Brief Introduction to our Project ⚙️ (section 1)
 Welcome to our project and get ready to follow us in this journey as we explore the duties of a senior data scientist for the "famous" **ThomasTrain** company! As a matter of fact, our main goal is to help the company to improve its marketing campaign, and consequently to make the customer retention higher, by providing a model able to predict the satisfaction of a customer. To accomplish this task, we were provided with the the trains.cv, a dataset containing both categorical and numerical features about the customers and their satisfaction regarding different aspects of their experience; once we identified the binary categorical variable "Satisfied" (Y/N) as our target, we decided to approach the problem as a classification task. Here are the main steps we followed: 
-- **Checking Data Integrity**: we started by checking the dataset for missing values, duplicates and outliers, and then we proceeded to deal with them.
-- **Exploratory Data Analysis**: we performed a thorough analysis of the dataset, in order to understand the relationships between the features and the target, and to identify the most important features.
+
+- **Checking Data Integrity**: we started by checking the dataset for missing values, duplicates and outliers, and then we proceeded to deal with them;
+
+- **Exploratory Data Analysis**: we performed a thorough analysis of the dataset, in order to understand the relationships between the features and the target, and to identify the most important features;
+
 - **Preprocessing**: we encoded the categorical features, and then we standardized the numerical ones.
-- **Splitting**: we split the dataset into training and test set.
-- **Models Selection and Training**: we trained different models, and we evaluated them based on different metrics.
-- **Hyperparameters Tuning**: we tuned the hyperparameters of our models, in order to improve their performance.
+- **Splitting**: we split the dataset into training and test set;
+
+- **Models Selection and Training**: we trained different models, and we evaluated them based on different metrics;
+
+- **Hyperparameters Tuning**: we tuned the hyperparameters of our models, in order to improve their performance;
+
 - **Final Evaluation**: we evaluated our models on the test set, and we drew our final conclusions. 
 
 ## Methods 🕵🏼‍♂️ (section 2)
@@ -68,14 +74,20 @@ Due to the nature of our target variable 'Satisfied' (binary categorical variabl
 
 ## Experimental Design 📐 (section 3)
 After determining the nature of our task (classification) and the target variable (Satisfied), we distinguished two different phases in building our model:
+
 - **Training of the models**: In this phase we focused on training our models in order to obtain a first evaluation of their performance; we trained three models, Logistic Regression, KNN and Decision Trees. We also evaluated the models' performances using different metrics, Accuracy, Precision, Recall, F1-Score, and by plotting the ROC curve and the confusion matrix. We used these first results as a baseline for the second phase.
+
 - **Tuning the Hyperparameters**: In this phase we focused on tuning the hyperparameters of our models in order to improve their performance; we first used the **Randomized Search** algorithm, that is the *less computationally and timing expensive*, then we applied on the best parameters found the *Grid Search* algorithm in order to do a further research regarding the best parameters for the *best model possible*; again we evaluated the models' performances on the same metrics.
 
 ### Evaluation Metrics
 - **Accuracy**: is defined as the *ratio of the number of correct predictions to the total number of predictions*. This metric is considered as a good starting point for classification problems that have well balanced data and not skewed; however, it is not a good metric when the dataset is imbalanced;
+
 - **Precision**: is the ratio of true positives to the summation of true positives and false positives. It basically *analyses the positive predictions* and it's a particularly useful metric when the cost of false positives is high;
+
 - **Recall**: is the ratio of true positives to the summation of true positives and false negatives. It basically *analyses the number of correct positive samples* and it's a particularly useful metric when the cost of false negatives is high;
-- **F1 score**: is the *harmonic mean of precision and recall*. It is seen that during the precision-recall trade-off if we increase the precision, recall decreases and vice versa. The goal of the F1 score is to combine precision and recall.
+
+- **F1 score**: is the *harmonic mean of precision and recall*. It is seen that during the precision-recall trade-off if we increase the precision, recall decreases and vice versa. The goal of the F1 score is to combine precision and recall;
+
 - **Confusion matrix**: a table used to assess the performances of a classification model; it works by summarizing the counts of true positive, true negative, false positive, and false negative predictions.
 - **Receiver Operating Characteristic(ROC) curve**: is a *probabilistic curve* used to *highlight the model’s performance*. The ROC curve is created by plotting the true positive rate (TPR) against the false positive rate (FPR) at various threshold settings. The area under the curve (AUC) is a measure of how well a parameter can distinguish between two groups. The higher the AUC, the better the model is at predicting.
 
@@ -91,6 +103,7 @@ After determining the nature of our task (classification) and the target variabl
 For this project, we devided this part into two steps:
 
 - **Randomized Search:** we fistly used the RandomizedSearchCV algorithm which performs a random search over a specified hyperparameter distribution; instead of trying all possible combinations, it randomly samples a fixed number of hyperparameter configurations from the specified distribution and it uses *cross-validation* to evaluate the performance of each sampled configuration. This approach has two main benefits: it allows us to narrow down the range of hyperparameters to explore, and it allows us to control the computational budget we want to allocate to hyperparameter tuning.
+
 - **Grid Search:** then we applied on the best parameters found, the Grid Search algorithm in order to do a further research regarding the best parameters; it takes as input a dictionary where keys are hyperparameter names, and values are lists of values to try (provided by the Randomized Search). It then evaluates all possible combinations of hyperparameter values using cross-validated performance. Even though this algorithm performs an exhaustive search over a specified hyperparameter grid, it can be more computationally expensive, especially with a large hyperparameter space, compared with Randomized Search (and that's why we decided to further proceed with Grid Search after selecting the best parameter to tune with Randomized Search).
 
 ## Results (Section 4)
