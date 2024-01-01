@@ -106,6 +106,6 @@ For this project, we devided this part into two steps:
 
 - **Grid Search:** then we applied on the best parameters found, the Grid Search algorithm in order to do a further research regarding the best parameters; it takes as input a dictionary where keys are hyperparameter names, and values are lists of values to try (provided by the Randomized Search). It then evaluates all possible combinations of hyperparameter values using cross-validated performance. Even though this algorithm performs an exhaustive search over a specified hyperparameter grid, it can be more computationally expensive, especially with a large hyperparameter space, compared with Randomized Search (and that's why we decided to further proceed with Grid Search after selecting the best parameter to tune with Randomized Search).
 
-## Results (Section 4)
+## Results📊 (Section 4)
 
-## Conclusions (Section 5)
+## Conclusions🎖 (Section 5)
