@@ -1,4 +1,4 @@
-# Artificial Intelligence & Machine Learning - 2023/2024 : Trains Dataset Project 
+# Artificial Intelligence & Machine Learning - 2023/2024 : Trains Dataset Project 🚆
 - **Bruni Sofia        (285231)**
 - **Sebastiani Mattia  (288071)**
 - **Torella Marta      (284091)**
@@ -117,3 +117,4 @@ Finally, in the below figure we can observe the comparison between the performan
 
 
 ## Conclusions🎖 (Section 5)
+In this project we were asked to help the marketing team of the ThomasTrain company to improve its marketing campaign, and consequently to make the customer retention higher, by providing a model able to predict the satisfaction of a customer,
