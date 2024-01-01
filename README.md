@@ -34,7 +34,7 @@ We loaded the dataset into a pandas dataframe and proceeded to check for missing
 
 
 After cleaning the data, we started conducting our EDA (Exploratory Data Analysis) by getting a first visive evaluation of the variables interactions by plotting the correlation matrix for the numerical features, in which we observed that the highest correlation (excluding the values along the diagonal and the correlation between 'Departure Delay in Minutes' and 'Arrival Delay in Minutes' which is quite straightforward) was achieved by 'Online Booking Rating' and 'Onboard Wifi Rating' which can be explained by the fact that both features are related to the online experience of the customer. Other relevant high correlation scores were achieved between 'Cleanliness Rating' and 'Onboard Entertainment Rating', between 'Seat Rating' and 'Cleanliness Rating', and lastly between 'Cleanliness Rating' and 'Onboard Entertainment Rating', which show how customers positively valued a clean environment and its comforts.
-![Alt text](images/correlation_matrix_heatmap1.png)
+![correlation_matrix_heatmap](images/correlation_matrix_heatmap1.png)
 
 Then, we used some **'countplots'** to visualize the distribution of our target variable 'Satisfied' and of the remaining categorical features; the we formulated the following initial assumptions:
 
@@ -47,8 +47,8 @@ Then, we used some **'countplots'** to visualize the distribution of our target 
 • **Distribution of Ticket Class**: the purchase levels of Premium and Economy tickets registered almost the same values for both, while Smart Class tickets were only purchased by a small fraction of the total customers; therefore, the company might be facing two different types of customers: the ones that are willing to spend more for a better service (Premium Class) and the ones that are more price-sensitive and are willing to sacrifice some comfort for a cheaper ticket(Economy Class), without having an 'in-between' category of customers that are willing to spend a little more for a better service than the Economy Class but not as much as the Premium Class (Smart Class);
 
 • **Distribution of Work or Leisure**: the majority of the customers were travelling for work rather than for leisure; this could be explained by the fact that the company mainly operates in the business sector, providing services for business travellers rather than for leisure travellers;
-![Alt text](images/satisfied_distriburion.png)  
-![Alt text](images/cat_distribution.png)
+![satisfied_distriburion](images/satisfied_distriburion.png)  
+![cat_distribution](images/cat_distribution.png)
 
 We finally explored the behaviour of our numerical features by plotting their histograms in order to get a better understanding of their distribution and to identify possible outliers; we observed that the majority of the features were normally distributed, with the exception of 'Distance', 'Departure Delay in Minutes' and 'Arrival Delay in Minutes' which were right-skewed, and 'Age' which was slightly left-skewed and right-skewed. Moreover, we deduced that: 
 
@@ -57,21 +57,19 @@ We finally explored the behaviour of our numerical features by plotting their hi
 • **Distribution of Age**: the age distribution of the customers was quite balanced between 20 and 60 years-old people with a slight skewness towards the younger and older customers; this could be explained by the fact that the company might mainly operate in the business sector (as showned by the majority of customers travveling for work purposes), providing services for business travellers rather than for leisure travellers, which are usually aged between 20 and 60 years old;
 
 • **Distribution of Departure and Arrival Delay in minutes**: the distribution of the departure and arrival delay in minutes was quite similar since these two features are highly correlated, with the majority of the customers experiencing a delay of less than 10 minutes; this could be an indicator of a good service provided by the company, but it could also be a sign of a biased dataset, since again customers that experienced a delay of more than 10 minutes might have decided to not give any rating at all. 
-![Alt text](images/num_distribution.png)
+![num_distribution](images/num_distribution.png)
 
 ### Data Preprocessing
 In order to prepare our data for the training of our models, we first encoded the categorical features using the **'OneHotEncoder'** from the scikit-learn library; we proceeded in selecting the Pandas function *get_dummies* for the OneHotEncoding
 In our case, we considered this method suitable for our nominal data because it doesn't introduce any artificial relationships between categories and, despite the 'curse of dimensionality', and in our case it didn't lead to a large number of features since we didn't obtain many unique categories.
 After the encoding, we proceeded in analyzing the correlation between our target variable and all the other variables, even if we took notice only of the top 5 most correlated features (by taking into account the absolute value of the correlation coefficient). We noticed that he highest correlation with our target variable 'Satisfied' was achieved by 2 variables, the 'Ticket Class_Premium' variable (categorical) and the 'Boarding Rating' (numerical); however, also in this case we didn't achieve a correlation higher than 0.50. As previously discussed, the high correlation between 'Satisfied' and 'Boarding Rating' could be explained by the fact that the boarding experience is the first contact that the customer has with the company's services, and therefore it is crucial for the customer's satisfaction; moreover, the high correlation between 'Satisfied' and 'Ticket Class_Premium' could be explained by the fact that customers that are willing to spend more for a better service (Premium Class) are more likely to be satisfied by the service provided by the company. Furthermore, we can notice an inverse correlation of -0.45 between the target variable and the variables 'Work or Leisure_leisure' and 'Ticket Class_Economy': the first inverse correlation could be explained by the fact that customers travelling for leisure are more likely to buy Economy tickets (as shown by the correlation between 'Work or Leisure_leisure' and 'Ticket Class_Economy' of 0.50 against the correlation between 'Work or Leisure_leisure' and 'Ticket Class_Premium' of -0.55), and therefore they are more likely to be unsatisfied by the service provided by the company; the second inverse correlation could be explained by the fact that customers that are more price-sensitive and are willing to sacrifice some comfort for a cheaper ticket (Economy Class) are, as showed before, more likely to be unsatisfied by the service provided by the company.
-![Alt text](images/all_heatmap.png)
+![all_heatmap](images/all_heatmap.png)
 
 ### Splitting and Scaling the Data
 Once the data was ready to be used for the training of our models, we proceeded in splitting it into training and test set, by using the **'train_test_split'** function from the scikit-learn library; we decided to have a split ratio of 75/25, meaning that 75% of the data is used for the train set and 15% of the data is used for the test set. We also decided to use a random state of 42, in order to have reproducible results. After the split, we proceeded in scaling the numerical features using the **'StandardScaler'** from the scikit-learn library; note that we fit the scaler only on the training data and not the testing data to avoid data leakage; after fitting the scaler on the training data, we transformed both the training and testing sets.
 
 ### Problem Definition and Model Selection
 Due to the nature of our target variable 'Satisfied' (binary categorical variable), we decided to approach the problem as a classification task. Therefore, we decided to implement the following models according to our data specifi characteristicts: Logistic Regression, KNN and Decision Trees.
-
-### Flowchart
 
 ## Experimental Design 📐 (section 3)
 After determining the nature of our task (classification) and the target variable (Satisfied), we distinguished two different phases in building our model:
@@ -108,5 +106,14 @@ For this project, we devided this part into two steps:
 - **Grid Search:** then we applied on the best parameters found, the Grid Search algorithm in order to do a further research regarding the best parameters; it takes as input a dictionary where keys are hyperparameter names, and values are lists of values to try (provided by the Randomized Search). It then evaluates all possible combinations of hyperparameter values using cross-validated performance. Even though this algorithm performs an exhaustive search over a specified hyperparameter grid, it can be more computationally expensive, especially with a large hyperparameter space, compared with Randomized Search (and that's why we decided to further proceed with Grid Search after selecting the best parameter to tune with Randomized Search).
 
 ## Results📊 (Section 4)
+After training our models and tuning their hyperparameters, we evaluated their performance on the test set by using the same metrics used for the training phase; the *Decision Trees* model confirmed its performance as the best model at correctly classifying our target variable 'Satisfied', both in its untuned and tuned version, while the *Logistic Regression* model and its tuned version were the ones that achieved the lowest scores for every metric; this confirms our hypothesis that the relationship between the target variable and the input features is **not perfectly linear** as we previously assumed, and therefore the tuning of the hyperparameters might not be the best approach to improve its performance. 
+
+Indeed, the *Decision Tree* model was the one that achieved the highest score for every metric, included AUC which scored 0.99 out of 1.This could be explained by the fact that the patterns in our dataset might involve complex decision boundaries; a decision tree might be more adept at capturing and representing these patterns compared to the local averaging approach of KNN and the linearity assumption of *Logistic Regression*. Also, KNN can be sensitive to outliers, as it relies on the majority class of the k-nearest neighbors while decision trees are more robust to them because they make decisions based on the majority class within regions of the feature space.
+
+Finally, in the below figure we can observe the comparison between the performance of the three models we trained (Logistic Regression, KNN and Decision Trees) and their tuned versions in terms of accuracy, precision and recall on the test set; notice that each model is paired with its tuned version. Overall we can immediately observe that, in general, the tuned models were able to improve the results obtained on every metrics by the original models. Notice that the tuning of the *Logistic Regression* was the one that achived the lowest improvement, almost equal to zero, while the *Decision Tree* was the model that achieved the highest improvement.
+
+![comparison](images/comparison.png)
+![ROCTreeTuned](images/ROCTreeTuned.png)
+
 
 ## Conclusions🎖 (Section 5)
